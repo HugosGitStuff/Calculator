@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg,
+        #e8e8e8,
+        #d4d4d4 25%,
+        #c0c0c0 50%,
+        #d4d4d4 75%,
+        #e8e8e8
+    );
+    position: relative;
+    overflow: hidden;
+}
+
+/* Metallic texture overlay */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(90deg, 
+            rgba(255,255,255, 0.07) 0%,
+            rgba(255,255,255, 0.13) 50%,
+            rgba(255,255,255, 0.07) 100%
+        );
+    background-size: 50px 100%;
+    pointer-events: none;
+}
+
+.calculator-container {
+    padding: 20px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+}
+
+.calculator {
+    background: rgba(30, 30, 30, 0.9);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    width: 320px;
+}
+
+.display {
+    background: #2c3e50;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: right;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.previous-operand {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.2rem;
+    min-height: 24px;
+}
+
+.current-operand {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 300;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+button {
+    padding: 15px;
+    font-size: 1.4rem;
+    border: none;
+    border-radius: 10px;
+    background: #34495e;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+    background: #2c3e50;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+.operator {
+    background: #e67e22;
+}
+
+.operator:hover {
+    background: #d35400;
+}
+
+.special {
+    background: #c0392b;
+}
+
+.special:hover {
+    background: #a93226;
+}
+
+.equals {
+    background: #27ae60;
+    grid-column: span 2;
+}
+
+.equals:hover {
+    background: #219a52;
+}
+
+/* Glowing effect on buttons */
+button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    pointer-events: none;
+}
+
+button:hover::after {
+    opacity: 1;
+}
